@@ -112,7 +112,7 @@ if(S.tpl.length&&!S.tpl[0].items)S.tpl=[{id:'t1',name:'Paket Layanan AC',items:S
 if(!S.words)S.words={q:{o:'Dengan hormat,\nSehubungan dengan permintaan Bapak/Ibu, bersama ini kami sampaikan penawaran harga untuk pekerjaan AC sebagai berikut:',c:'Demikian penawaran ini kami sampaikan. Atas perhatian dan kepercayaan Bapak/Ibu, kami ucapkan terima kasih.'},n:{o:'Terima kasih telah menggunakan jasa kami. Berikut rincian pekerjaan dan pembayaran:',c:'Terima kasih atas kepercayaan Bapak/Ibu. Mohon simpan nota ini sebagai bukti pembayaran yang sah.'}};
 if(S.set.name==='CV Sejuk Teknik AC')S.set.name='CV Akhmad Teknik';if((S.set.bank||'').includes('CV Sejuk Teknik'))S.set.bank=S.set.bank.replace('CV Sejuk Teknik','CV Akhmad Teknik');
 // ===== ISI DENGAN DATA SUPABASE (lihat panduan). Kosong = mode lokal =====
-const CFG={url:'',key:''};
+const CFG={url:'https://ivhfacwqvhuahvfhupdi.supabase.co',key:'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Iml2aGZhY3dxdmh1YWh2Zmh1cGRpIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTMxNTEwNDUsImV4cCI6MjEwODcyNzA0NX0.kVzGWYVZmF6P81QYFG0jKY-FEGhQTN8A_y_i3Kqt_g8'};
 const CID=Math.random().toString(36).slice(2),ON=!!(CFG.url&&CFG.key),sb=ON&&window.supabase?supabase.createClient(CFG.url,CFG.key):null;let tm;
 const lsave=()=>{try{localStorage.setItem('acapp',JSON.stringify(S))}catch(e){}};
 const pushSet=()=>{if(!sb)return;clearTimeout(tm);tm=setTimeout(()=>sb.from('settings').upsert({id:'main',data:{set:S.set,tpl:S.tpl,terms:S.terms,words:S.words,by:CID}}).then(r=>{if(r.error)console.error(r.error)}),600)};
